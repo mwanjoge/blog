@@ -32,6 +32,11 @@
                 </div>
                 <div class="mb-3">
                     <textarea id="tinymce-mytextarea"></textarea>
+                    <div id="editor">
+                        <p>Hello World!</p>
+                        <p>Some initial <strong>bold</strong> text</p>
+                        <p><br /></p>
+                    </div>
                 </div>
             </div>
             <div class="col">
@@ -55,45 +60,47 @@
 @endsection
 @section('scripts')
     <script src="https://cdn.tiny.cloud/1/34p6wf8mn4lw8qpvtvjeaiwnp24r0itb1wgn23ahcy0aacdk/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
     <script>
         // @formatter:off
         document.addEventListener("DOMContentLoaded", function () {
-            let options = {
-                selector: '#tinymce-mytextarea',
-                height: 300,
-                menubar: false,
-                statusbar: false,
-                plugins: [
-                    'advlist autolink lists link image charmap print preview anchor',
-                    'searchreplace visualblocks code fullscreen',
-                    'insertdatetime media table paste code help wordcount'
-                ],
-                toolbar: 'undo redo | formatselect | ' +
-                    'bold italic backcolor | alignleft aligncenter ' +
-                    'alignright alignjustify | bullist numlist outdent indent | ' +
-                    'removeformat',
-                content_style: 'body { font-family: -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif; font-size: 14px; -webkit-font-smoothing: antialiased; }'
-            }
-            if (localStorage.getItem("tablerTheme") === 'dark') {
-                options.skin = 'oxide-dark';
-                options.content_css = 'dark';
-            }
-            let otherOption = {
-                    selector: 'textarea',
-                    plugins: 'anchor autolink charmap codesample emoticons image imageupload link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss markdown',
-                    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
-                    tinycomments_mode: 'embedded',
-                    tinycomments_author: 'Author name',
-                    mergetags_list: [
-                        { value: 'First.Name', title: 'First Name' },
-                        { value: 'Email', title: 'Email' },
-                    ],
-                    ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
-
-            }
-            tinymce.init(otherOption);
+            // let options = {
+            //     selector: '#tinymce-mytextarea',
+            //     height: 300,
+            //     menubar: false,
+            //     statusbar: false,
+            //     plugins: [
+            //         'advlist autolink lists link image charmap print preview anchor',
+            //         'searchreplace visualblocks code fullscreen',
+            //         'insertdatetime media table paste code help wordcount'
+            //     ],
+            //     toolbar: 'undo redo | formatselect | ' +
+            //         'bold italic backcolor | alignleft aligncenter ' +
+            //         'alignright alignjustify | bullist numlist outdent indent | ' +
+            //         'removeformat',
+            //     content_style: 'body { font-family: -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif; font-size: 14px; -webkit-font-smoothing: antialiased; }'
+            // }
+            // if (localStorage.getItem("tablerTheme") === 'dark') {
+            //     options.skin = 'oxide-dark';
+            //     options.content_css = 'dark';
+            // }
+            // let otherOption = {
+            //         selector: 'textarea',
+            //         plugins: 'anchor autolink charmap codesample emoticons image imageupload link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss markdown',
+            //         toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+            //         tinycomments_mode: 'embedded',
+            //         tinycomments_author: 'Author name',
+            //         mergetags_list: [
+            //             { value: 'First.Name', title: 'First Name' },
+            //             { value: 'Email', title: 'Email' },
+            //         ],
+            //         ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
+            //
+            // }
+            // tinymce.init(otherOption);
         })
-        // @formatter:on
+        const quill = new Quill('#editor', {
+            theme: 'snow'
+        });
     </script>
 @endsection
