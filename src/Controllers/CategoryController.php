@@ -8,6 +8,12 @@ use Nisimpo\Blog\Models\Category;
 
 class CategoryController extends Controller
 {
+
+    public function __construct()
+    {
+       // $this->middleware('auth');
+    }
+
     public function index(): \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
         $categories = Category::all();

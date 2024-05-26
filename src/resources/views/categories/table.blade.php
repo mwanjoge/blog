@@ -17,7 +17,7 @@
                 <td>{{$category->name}}</td>
                 <td>{{$category->category?->name}}</td>
                 <td>{{$category->code}}</td>
-                <td>{{$category->lang}}</td>
+                <td>{{$category->lang.' '.app()->getLocale()}}</td>
                 <td>{{$category->active ? 'Active':'Not Active'}}</td>
             </tr>
         @endforeach

@@ -17,7 +17,7 @@
                 <td>{{$post->title}}</td>
                 <td>{{$post->slug}}</td>
                 <td>{{$post->category?->name}}</td>
-                <td>{{$post->lang}}</td>
+                <td>{{$post->lang.' '.session()->get('locale')}}</td>
                 <td>{{$post->published ? $post->published_at->format('d M Y') :'Not Published'}}</td>
             </tr>
         @endforeach

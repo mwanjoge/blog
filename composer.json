@@ -14,7 +14,9 @@
         "illuminate/filesystem": "^9.21|^10.0|^11.0",
         "illuminate/support": "^9.21|^10.0|^11.0",
         "illuminate/validation": "^9.21|^10.0|^11.0",
-        "symfony/console": "^6.0|^7.0"
+        "symfony/console": "^6.0|^7.0",
+        "livewire/livewire": "^3.0",
+        "qcod/laravel-settings": "dev-master"
     },
     "require-dev": {
         "orchestra/testbench": "^7.35|^8.15|^9.0",
@@ -23,7 +25,8 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Nisimpo\\Blog\\": "src/"
+            "Nisimpo\\Blog\\": "src/",
+            "Illuminate\\Nisimpo\\Blog\\": "app/"
         }
     },
     "extra": {

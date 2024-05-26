@@ -8,7 +8,7 @@ class BlogServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-
+        $this->mergeConfigFrom(__DIR__.'/../config/livewire.php','blog');
     }
 
     public function boot(): void

@@ -10,7 +10,14 @@ use Nisimpo\Blog\Models\Post;
 
 class PostController extends Controller
 {
+
+    public function __construct()
+    {
+       // $this->middleware('auth');
+    }
+
     public function index(){
+        session()->put('locale','sw');
         $posts = Post::all();
         return view('blog::posts.index',compact('posts'));
     }
@@ -27,5 +34,9 @@ class PostController extends Controller
         $post->published_at = $request->published_at??now();
         $post->save();
         return redirect()->route('posts.index');
+    }
+
+    public function find($id){
+        return Post::find($id);
     }
 }
