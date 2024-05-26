@@ -31,12 +31,11 @@
                     <input type="text" name="title" class="form-control">
                 </div>
                 <div class="mb-3">
-                    <textarea id="tinymce-mytextarea"></textarea>
-                    <div id="editor">
+                    <textarea name="body" id="editor">
                         <p>Hello World!</p>
                         <p>Some initial <strong>bold</strong> text</p>
                         <p><br /></p>
-                    </div>
+                    </textarea>
                 </div>
             </div>
             <div class="col">
@@ -59,7 +58,6 @@
     </form>
 @endsection
 @section('scripts')
-    <script src="https://cdn.tiny.cloud/1/34p6wf8mn4lw8qpvtvjeaiwnp24r0itb1wgn23ahcy0aacdk/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
     <script>
         // @formatter:off
