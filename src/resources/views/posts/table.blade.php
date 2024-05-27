@@ -8,6 +8,7 @@
             <th>Category</th>
             <th>Lang</th>
             <th>Published</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -19,6 +20,11 @@
                 <td>{{$post->category?->name}}</td>
                 <td>{{$post->lang.' '.session()->get('locale')}}</td>
                 <td>{{$post->published ? $post->published_at->format('d M Y') :'Not Published'}}</td>
+                <td>
+                    <a href="{{route('posts.edit',$post->id)}}">
+                        Edit
+                    </a>
+                </td>
             </tr>
         @endforeach
         </tbody>

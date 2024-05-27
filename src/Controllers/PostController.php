@@ -36,7 +36,20 @@ class PostController extends Controller
         return redirect()->route('posts.index');
     }
 
-    public function find($id){
-        return Post::find($id);
+    public function edit($id){
+        $post = Post::find($id);
+        $categories = Category::all();
+        return view('blog::posts.edit',compact('categories','post'));
+    }
+
+    public function update($id, Request $request){
+        $post = Post::find($id);
+        $post->update($request->all());
+        return back();
+    }
+
+    public function show($id){
+        $post = Post::find($id);
+        return back();
     }
 }

@@ -31,16 +31,17 @@
                     <input type="text" name="title" class="form-control">
                 </div>
                 <div class="mb-3">
-                    <textarea name="body" id="editor">
+                    <textarea id="tinymce-mytextarea" name="body"></textarea>
+                    <div id="body" name="body">
                         <p>Hello World!</p>
                         <p>Some initial <strong>bold</strong> text</p>
                         <p><br /></p>
-                    </textarea>
+                    </div>
                 </div>
             </div>
             <div class="col">
                 <div class="mb-3">
-                    <input type="checkbox" name="published" value="1"> Publish Now<br>
+                    <input id="n" type="checkbox" name="published" value="1"> Publish Now<br>
                 </div>
                 <div class="mb-3">
                     <label>Publish At</label>
@@ -51,13 +52,14 @@
                     <input type="file" name="image" class="form-control">
                 </div>
                 <div class="mb-3 text-end">
-                    <input type="submit" class="btn btn-primary" value="Submit">
+                    <input id="submit-post" type="submit" class="btn btn-primary" value="Submit">
                 </div>
             </div>
         </div>
     </form>
 @endsection
 @section('scripts')
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
     <script>
         // @formatter:off
@@ -97,8 +99,13 @@
             // }
             // tinymce.init(otherOption);
         })
-        const quill = new Quill('#editor', {
+        let quill = new Quill('#body', {
             theme: 'snow'
         });
+
+        $('#submit-post').hover(function (){
+            $('#tinymce-mytextarea').val(quill.getSemanticHTML(0, quill.getLength()));
+        });
+
     </script>
 @endsection
