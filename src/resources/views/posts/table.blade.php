@@ -3,6 +3,7 @@
         <thead>
         <tr class="th">
             <th>#</th>
+            <th>Image</th>
             <th>Title</th>
             <th>Slug</th>
             <th>Category</th>
@@ -15,10 +16,13 @@
         @foreach($posts as $post)
             <tr>
                 <td>{{$loop->index+1}}</td>
+                <td>
+                    <img src="{{url('storage/'.$post->image)}}" style="height: 50px;">
+                </td>
                 <td>{{$post->title}}</td>
                 <td>{{$post->slug}}</td>
                 <td>{{$post->category?->name}}</td>
-                <td>{{$post->lang.' '.session()->get('locale')}}</td>
+                <td>{{$post->lang}}</td>
                 <td>{{$post->published ? $post->published_at->format('d M Y') :'Not Published'}}</td>
                 <td>
                     <a href="{{route('posts.edit',$post->id)}}">

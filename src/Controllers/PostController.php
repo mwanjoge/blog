@@ -17,8 +17,8 @@ class PostController extends Controller
     }
 
     public function index(){
-        session()->put('locale','sw');
-        $posts = Post::all();
+        //session()->put('locale','sw');
+        $posts = Post::orderBy('id','desc')->get();
         return view('blog::posts.index',compact('posts'));
     }
 
@@ -33,6 +33,9 @@ class PostController extends Controller
         $post->slug = $slug;
         $post->published_at = $request->published_at??now();
         $post->save();
+        $path = $request->image->storeAs('posts', $post->id.'.'.$request->image->extension(),'public');
+        $post->image = $path;
+        $post->save();
         return redirect()->route('posts.index');
     }
 
@@ -45,6 +48,14 @@ class PostController extends Controller
     public function update($id, Request $request){
         $post = Post::find($id);
         $post->update($request->all());
+        if(!is_null($request->image)){
+            if($request->image->isValid()){
+                $path = $request->image->storeAs('posts', $post->id.'.'.$request->image->extension(),'public');
+                $post->image = $path;
+            }
+        }
+
+        $post->save();
         return back();
     }
 

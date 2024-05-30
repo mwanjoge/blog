@@ -2,42 +2,42 @@
 @section('content')
     <div class="row">
         <div class="col">
-            <h1>Posts</h1>
-            <div class="row mb-3">
-                <div class="col">
-                    @include('blog::menu')
-                </div>
-                <div class="col text-end">
-                    <a href="{{route('posts.create')}}" class="btn btn-primary"> + Create new post</a>
-                </div>
-            </div>
+            <h1>
+                Posts
+                <a href="{{route('posts.create')}}" class="btn btn-primary float-end"> + Create new post</a>
+            </h1>
+            <hr class="mt-0 mb-2">
         </div>
     </div>
-    <form action="{{route('posts.update',$post->id)}}" method="post">
+    <form action="{{route('posts.update',$post->id)}}" method="post" enctype="multipart/form-data">
         @method('put')
         <div class="row">
             <div class="col-8">
-                @csrf
-                <div class="mb-3">
-                    <label>Category</label>
-                    <select class="form-control" name="category_id">
-                        <option value="{{$post->category_id}}">{{$post->category->name}}</option>
-                        @foreach($categories as $category)
-                            @if($category->id !== $post->category_id)
-                                <option value="{{$category->id}}">{{$category->name}}</option>
-                            @endif
-                        @endforeach
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label>Title</label>
-                    <input type="text" name="title" class="form-control" value="{{$post->title}}">
-                </div>
-                <div class="mb-3">
-                    <textarea style="display:none;" id="tinymce-mytextarea" name="body"></textarea>
-
-                    <div id="body">
-                        {!! $post->body !!}
+                <div class="card">
+                    <div class="card-body">
+                        @csrf
+                        <div class="mb-3">
+                            <label>Post Category</label>
+                            <select class="form-control" name="category_id">
+                                <option value="{{$post->category_id}}">{{$post->category->name}}</option>
+                                @foreach($categories as $category)
+                                    @if($category->id !== $post->category_id)
+                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label>Post Title</label>
+                            <input type="text" name="title" class="form-control" value="{{$post->title}}">
+                        </div>
+                        <div class="mb-3">
+                            <label>Body</label>
+                            <textarea style="display:none;" id="tinymce-mytextarea" name="body"></textarea>
+                            <div id="body" style="height: 400px;">
+                                {!! $post->body !!}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -57,7 +57,8 @@
                 </div>
                 <div class="mb-3">
                     <label>Featured Image</label>
-                    <input type="file" name="image" class="form-control">
+                    <img src="{{url('storage/'.$post->image)}}" class="image-thumbnail" style="width: 100%; height:200px;">
+                    <input type="file" name="image" value="{{$post->image}}" class="form-control">
                 </div>
                 <div class="mb-3 text-end">
                     <input id="submit-post" type="submit" class="btn btn-primary" value="Submit">

@@ -2,9 +2,6 @@
 @section('content')
     <h1>Categories</h1>
     <div class="row mb-3">
-        <div class="col">
-            @include('blog::menu')
-        </div>
     </div>
     <div class="row">
         <div class="col-7">
