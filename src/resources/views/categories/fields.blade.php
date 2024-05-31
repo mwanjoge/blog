@@ -13,10 +13,6 @@
         <input type="text" name="name" class="form-control" value="">
     </div>
     <div class="mb-3">
-        <label>Category Code</label>
-        <input type="text" name="code" class="form-control" value="">
-    </div>
-    <div class="mb-3">
         <label>Category Language</label>
         <select name="lang" class="form-control">
             <option value="sw">Kiswahili</option>

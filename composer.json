@@ -27,7 +27,8 @@
         "psr-4": {
             "Nisimpo\\Blog\\": "src/",
             "Illuminate\\Nisimpo\\Blog\\": "app/"
-        }
+        },
+        "files": ["src/Helpers/blog_helpers.php"]
     },
     "extra": {
         "laravel": {

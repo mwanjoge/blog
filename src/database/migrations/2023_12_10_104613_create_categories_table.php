@@ -17,9 +17,12 @@ return new class extends Migration
             $table->string('name');
             $table->string('image')->nullable();
             $table->boolean('active')->default(true);
-            $table->string('code')->nullable();
+            $table->string('slug')->nullable();
+            $table->integer('order');
+            $table->integer('items_count')->default(1);
             $table->string('lang')->default('sw');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

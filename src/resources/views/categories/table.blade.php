@@ -13,10 +13,10 @@
         <tbody>
         @foreach($categories as $category)
             <tr>
-                <td>{{$loop->index+1}}</td>
+                <td>{{$loop->iteration}}</td>
                 <td>{{$category->name}}</td>
                 <td>{{$category->category?->name}}</td>
-                <td>{{$category->code}}</td>
+                <td>{{$category->slug}}</td>
                 <td>{{$category->lang}}</td>
                 <td>{{$category->active ? 'Active':'Not Active'}}</td>
             </tr>
