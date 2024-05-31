@@ -1,16 +1,30 @@
-<table class="table">
-    @foreach(settings()->all($fresh = false) as $key => $setting)
+<table class="table table-sm mb-0">
+    @foreach(settings()->all($fresh = true) as $key => $setting)
         <tr>
-            <th>{{$key}}</th>
+            <th class="text-capitalize">{{$key}}</th>
+            <form action="{{route('settings.store')}}" method="post" enctype="multipart/form-data">
             <td>
-                @if($key == 'site left logo')
-                    <img src="{{url('storage/'.$setting)}}" class="image-thumbnail" style="height:150px;">
-                    <input type="file" name="val[]" value="{{$setting}}" class="form-control">
+                @csrf
+                @if($key == 'left site logo' || $key == 'right site logo' || $key == 'minimal site logo')
+                    <div class="row">
+                        <div class="col-2">
+                            <img src="{{url('storage/'.$setting)}}" class="image-thumbnail" style="height:50px;">
+                        </div>
+                        <div class="col">
+                            <input type="file" name="val"  class="form-control">
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="name" value="{{$key}}" class="form-control">
+                    <input type="hidden" name="val" value="{{$setting}}" class="form-control">
                 @else
-                    <input type="text" name="val[]" value="{{$setting}}" class="form-control">
+                    <input type="text" name="val" value="{{$setting}}" class="form-control">
+                    <input type="hidden" name="name" value="{{$key}}" class="form-control">
                 @endif
-                <input type="hidden" name="name[]" value="{{$key}}" class="form-control">
+
             </td>
+                <td><button type="submit" class="btn btn-primary">Save</button></td>
+            </form>
         </tr>
     @endforeach
 </table>
