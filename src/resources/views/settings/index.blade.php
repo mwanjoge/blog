@@ -8,8 +8,14 @@
             <div class="row">
                 <div class="col">
                     <div class="card">
-                        <div class="card-header">Posts List</div>
-                        @include('blog::settings.table')
+                        <div class="card-header">system Settings</div>
+                        <form action="{{route('settings.store')}}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            @include('blog::settings.table')
+                            <div class="card-footer text-end">
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
