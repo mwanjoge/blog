@@ -11,5 +11,5 @@ function getPostBySlug($slug)
 }
 
 function getLatestPostList($limit = 3){
-    return \Nisimpo\Blog\Models\Post::orderBy('id','desc')->limit($limit);
+    return \Nisimpo\Blog\Models\Post::orderBy('id','desc')->limit($limit)->get();
 }
