@@ -9,3 +9,7 @@ function getPostBySlug($slug)
 {
     return \Nisimpo\Blog\Models\Post::where('slug',$slug)->get()->first();
 }
+
+function getLatestPostList($limit = 3){
+    return \Nisimpo\Blog\Models\Post::orderBy('id','desc')->limit($limit);
+}
