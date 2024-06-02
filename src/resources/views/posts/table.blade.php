@@ -17,7 +17,7 @@
             <tr>
                 <td>{{$loop->index+1}}</td>
                 <td>
-                    @if(substr($upload->getMimeType(), 0, 5) == 'image')
+                    @if(str_starts_with($post->image->getMimeType(), 'image'))
                         <img src="{{url('storage/'.$post->image)}}" style="height: 50px;">
                     @else
                         <img src="{{asset('img/pdf.png')}}" style="height: 50px;">
