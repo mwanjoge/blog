@@ -18,3 +18,7 @@ function getPostByCategory($categoryName)
 function getLatestPostList($limit = 3){
     return \Nisimpo\Blog\Models\Post::orderBy('id','desc')->limit($limit)->get();
 }
+
+function getCategories($parent){
+    return \Nisimpo\Blog\Models\Category::with('categories')->where('name',$parent)->get()->first()->categories;
+}
