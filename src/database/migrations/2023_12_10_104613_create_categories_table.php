@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->boolean('active')->default(true);
             $table->string('slug')->nullable();
-            $table->integer('order');
+            $table->integer('order')->default(1);
             $table->integer('items_count')->default(1);
             $table->string('lang')->default('sw');
             $table->timestamps();

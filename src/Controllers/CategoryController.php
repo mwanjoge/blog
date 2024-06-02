@@ -4,6 +4,7 @@ namespace Nisimpo\Blog\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Str;
 use Nisimpo\Blog\Models\Category;
 
 class CategoryController extends Controller
@@ -21,7 +22,9 @@ class CategoryController extends Controller
     }
 
     public function store(Request $request){
-        Category::create($request->all());
+        $input = $request->all();
+        $input['slug'] = Str::lower(Str::of($request->name)->snake()) ;
+        Category::create($input);
         return back();
     }
 }
