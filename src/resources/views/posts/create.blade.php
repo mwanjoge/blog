@@ -99,6 +99,11 @@
             // tinymce.init(otherOption);
         })
         let quill = new Quill('#body', {
+            modules: {
+                imageResize: {
+                    displaySize: true // default false
+                },
+            },
             theme: 'snow'
         });
 
