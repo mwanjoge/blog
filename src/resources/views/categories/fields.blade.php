@@ -1,7 +1,7 @@
 <div class="row">
     <div class="mb-3">
         <label>Parent Category</label>
-        <select name="lang" class="form-control">
+        <select name="category_id" class="form-control">
             <option value="{{null}}">Choose parent category</option>
             @foreach($categories as $category)
                 <option value="{{$category->name}}">{{$category->name}}</option>
