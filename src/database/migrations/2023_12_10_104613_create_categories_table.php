@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('slug')->nullable();
             $table->integer('order')->default(1);
             $table->integer('items_count')->default(1);
-            $table->string('lang')->default('sw');
+            $table->string('lang')->default('en');
             $table->timestamps();
             $table->softDeletes();
         });
