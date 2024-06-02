@@ -15,8 +15,8 @@
     <div class="mb-3">
         <label>Category Language</label>
         <select name="lang" class="form-control">
-            <option value="sw">Kiswahili</option>
             <option value="en">English</option>
+            <option value="sw">Kiswahili</option>
         </select>
     </div>
     <div class="mb-3">
