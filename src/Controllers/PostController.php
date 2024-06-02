@@ -34,6 +34,9 @@ class PostController extends Controller
         $post->published_at = $request->published_at??now();
         $post->save();
         $path = $request->image->storeAs('posts', $post->id.'.'.$request->image->extension(),'public');
+        if($request->image->extension() == 'pdf'){
+            $path = $request->image->move(public_path('reports'),$post->id.'.'.$request->image->extension(),'public');
+        }
         $post->image = $path;
         $post->save();
         return redirect()->route('posts.index');
