@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug')->nullable();
             $table->string('image')->nullable();
-            $table->string('lang')->default('sw');
+            $table->string('lang')->default('en');
             $table->timestamp('published_at')->nullable();
             $table->boolean('published')->default(false);
             $table->boolean('pending')->default(false);
