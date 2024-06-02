@@ -4,7 +4,7 @@
         <select name="category_id" class="form-control">
             <option value="{{null}}">Choose parent category</option>
             @foreach($categories as $category)
-                <option value="{{$category->name}}">{{$category->name}}</option>
+                <option value="{{$category->id}}">{{$category->name}}</option>
             @endforeach
         </select>
     </div>
