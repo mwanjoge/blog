@@ -25,6 +25,7 @@ class CategoryController extends Controller
         $input = $request->all();
         $input['slug'] = Str::lower(Str::of($request->name)->snake()) ;
         Category::create($input);
+        alert()->success('Title','Lorem Lorem Lorem');
         return back();
     }
 }

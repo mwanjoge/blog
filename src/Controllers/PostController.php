@@ -27,18 +27,22 @@ class PostController extends Controller
         return view('blog::posts.create',compact('categories'));
     }
 
-    public function store(Request $request){
+    public function store(Request $request): \Illuminate\Http\RedirectResponse
+    {
         $slug = Str::of($request->title)->snake();
         $post = Post::create($request->all());
         $post->slug = $slug;
-        $post->published_at = $request->published_at??now();
+        $post->published_at = $request->published_at ?? now();
         $post->save();
         $path = $request->image->storeAs('posts', $post->id.'.'.$request->image->extension(),'public');
+
         if($request->image->extension() == 'pdf'){
             $path = $request->image->storeAs('reports',$post->id.'.'.$request->image->extension(),'public');
         }
         $post->image = $path;
         $post->save();
+
+        alert()->success('Success','Post saved successfully');
         return redirect()->route('posts.index');
     }
 
