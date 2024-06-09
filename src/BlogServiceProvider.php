@@ -31,9 +31,9 @@ class BlogServiceProvider extends ServiceProvider
     private function publishAll(): void
     {
         $this->publishes([
-            __DIR__.'/resources/views/categories' => base_path('resources/views/blog'),
-            __DIR__.'/resources/views/posts' => base_path('resources/views/blog'),
-            __DIR__.'/resources/views/settings' => base_path('resources/views/blog'),
+            __DIR__.'/resources/views/categories' => base_path('resources/views/blog/categories'),
+            __DIR__.'/resources/views/posts' => base_path('resources/views/blog/posts'),
+            __DIR__.'/resources/views/settings' => base_path('resources/views/blog/settings'),
         ],'blog');
     }
 
