@@ -17,7 +17,7 @@
                         @csrf
                         <div class="mb-3">
                             <label>Post Category</label>
-                            <select class="form-control" name="category_id">
+                            <select class="form-control" name="category_id" required>
                                 <option value="{{null}}">Choose parent category</option>
                                 @foreach($categories as $category)
                                     <option value="{{$category->id}}">{{$category->name}}</option>
@@ -26,7 +26,7 @@
                         </div>
                         <div class="mb-3">
                             <label>Post Title</label>
-                            <input type="text" name="title" class="form-control">
+                            <input type="text" name="title" class="form-control" required>
                         </div>
                         <div class="mb-3">
                             <label>Body</label>
@@ -40,7 +40,7 @@
             </div>
             <div class="col">
                 <div class="mb-3">
-                    <input id="n" type="checkbox" name="published" value="1"> Publish Now<br>
+                    <input id="n" type="checkbox" name="published" value="1" required> Publish Now<br>
                 </div>
                 <div class="mb-3">
                     <label>Publish At</label>
