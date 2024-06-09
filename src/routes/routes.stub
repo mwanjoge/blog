@@ -1,0 +1,6 @@
+Route::middleware(['auth'])->group(function (){
+    Route::resource('categories', \App\Http\Controllers\Blog\CategoryController::class);
+    Route::resource('posts', \App\Http\Controllers\Blog\PostController::class);
+    Route::resource('settings',\App\Http\Controllers\Blog\SettingController::class);
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+});
