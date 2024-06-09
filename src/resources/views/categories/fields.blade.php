@@ -10,7 +10,7 @@
     </div>
     <div class="mb-3">
         <label>Category Name</label>
-        <input type="text" name="name" class="form-control" value="">
+        <input type="text" name="name" class="form-control" value="" required>
     </div>
     <div class="mb-3">
         <label>Category Language</label>
@@ -21,7 +21,7 @@
     </div>
     <div class="mb-3">
         <label>Is Active</label>
-        <input type="checkbox" name="active" class="" value="1">
+        <input type="checkbox" name="active" class="" value="1" checked>
     </div>
     <div class="mb-3">
         <input type="submit" class="btn btn-primary" value="Submit">

@@ -1,5 +1,5 @@
 <table class="table table-sm mb-0">
-    @foreach(settings()->all() as $key => $setting)
+    @foreach(settings()->all(true) as $key => $setting)
         <tr>
             <th class="text-capitalize">{{$key}}</th>
             <form action="{{route('settings.store')}}" method="post" enctype="multipart/form-data">

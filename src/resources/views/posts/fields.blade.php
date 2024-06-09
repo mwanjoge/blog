@@ -5,7 +5,7 @@
                 @csrf
                 <div class="mb-3">
                     <label>Category</label>
-                    <select class="form-control" name="category_id">
+                    <select class="form-control" name="category_id" required>
                         <option value="{{null}}">Choose parent category</option>
                         @foreach($categories as $category)
                             <option value="{{$category->id}}">{{$category->name}}</option>
@@ -14,7 +14,7 @@
                 </div>
                 <div class="mb-3">
                     <label>Title</label>
-                    <input type="text" name="title" class="form-control">
+                    <input type="text" name="title" class="form-control" required>
                 </div>
                 <div class="mb-3">
                     <textarea id="tinymce-mytextarea">Hello, <b>Tabler</b>!</textarea>
@@ -26,7 +26,7 @@
                 </div>
                 <div class="mb-3">
                     <label>Publish At</label>
-                    <input type="date" name="published_at" class="form-control">
+                    <input type="date" name="published_at" class="form-control" required>
                 </div>
                 <div class="mb-3">
                     <label>Featured Image</label>

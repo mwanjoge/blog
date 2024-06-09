@@ -17,7 +17,6 @@ class PostController extends Controller
     }
 
     public function index(){
-        //session()->put('locale','sw');
         $posts = Post::orderBy('id','desc')->get();
         return view('blog::posts.index',compact('posts'));
     }
@@ -42,7 +41,7 @@ class PostController extends Controller
         $post->image = $path;
         $post->save();
 
-        alert()->success('Success','Post saved successfully');
+        alert()->success('Success'," '$request->title' saved successfully");
         return redirect()->route('posts.index');
     }
 

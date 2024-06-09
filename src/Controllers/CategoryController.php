@@ -2,6 +2,9 @@
 
 namespace Nisimpo\Blog\Controllers;
 
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Str;
@@ -15,7 +18,7 @@ class CategoryController extends Controller
        // $this->middleware('auth');
     }
 
-    public function index(): \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
+    public function index(): Factory|Application|View|\Illuminate\Contracts\Foundation\Application
     {
         $categories = Category::all();
         return view('blog::categories.index', compact('categories'));
@@ -25,7 +28,7 @@ class CategoryController extends Controller
         $input = $request->all();
         $input['slug'] = Str::lower(Str::of($request->name)->snake()) ;
         Category::create($input);
-        alert()->success('Title','Lorem Lorem Lorem');
+        alert()->success("Category '$request->name' saved successfully");
         return back();
     }
 }
