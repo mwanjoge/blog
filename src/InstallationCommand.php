@@ -48,6 +48,7 @@ class InstallationCommand extends Command
                     app_path('Http/Controllers/Blog/'.Str::replaceLast('.stub', '.php', $file->getFilename()))
                 );
             });
+        $this->info('Done............................................');
 
         $this->components->info('Copying blog routes to web.php  route file');
         file_put_contents(
@@ -55,13 +56,15 @@ class InstallationCommand extends Command
             file_get_contents(__DIR__.'/routes/routes.stub'),
             FILE_APPEND
         );
+        $this->info('Done............................................');
 
         $this->components->info('Publishing blog views and migrations');
         $this->call("vendor:publish",[
             '--tag' => 'blog',
             '--force' => true,
         ]);
+        $this->info('Done............................................');
 
-        $this->components->info('Blog files scaffolding generated successfully.');
+        $this->info('Blog files scaffolding generated successfully.');
     }
 }
