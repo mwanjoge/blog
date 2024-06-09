@@ -17,7 +17,7 @@
         "symfony/console": "^6.0|^7.0",
         "livewire/livewire": "^3.0",
         "qcod/laravel-settings": "dev-master",
-        "realrashid/sweet-alert": "dev-master"
+        "realrashid/sweet-alert": "^7.1"
     },
     "require-dev": {
         "orchestra/testbench": "^7.35|^8.15|^9.0",
