@@ -15,13 +15,13 @@ function getPostByCategory($categoryName)
     return \Nisimpo\Blog\Models\Category::with('posts')->where('name',$categoryName)->get()->first()->posts;
 }
 
-function getLatestPostList($limit = 3, string $slug = null){
+function getLatestPostList(int $limit = 3, string $slug = null){
     $posts =  \Nisimpo\Blog\Models\Post::select('posts.*');
     if(!is_null($slug)){
         $posts->join('categories','posts.category_id','categories.id')
             ->where('categories.slug','news_section');
     }
-    $posts->orderBy('id','desc')->limit($limit)->get();
+    $posts->orderBy('posts.id','desc')->limit($limit)->get();
     return $posts;
 }
 
