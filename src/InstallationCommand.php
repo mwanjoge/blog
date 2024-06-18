@@ -48,6 +48,14 @@ class InstallationCommand extends Command
                     app_path('Http/Controllers/Blog/'.Str::replaceLast('.stub', '.php', $file->getFilename()))
                 );
             });
+
+        collect($filesystem->allFiles(__DIR__.'/Models/stubs'))
+            ->each(function (SplFileInfo $file) use ($filesystem) {
+                $filesystem->copy(
+                    $file->getPathname(),
+                    app_path('Models/Blog/'.Str::replaceLast('.stub', '.php', $file->getFilename()))
+                );
+            });
         $this->info('Done............................................');
 
         $this->components->info('Copying blog routes to web.php  route file');

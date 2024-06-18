@@ -34,7 +34,7 @@ class BlogServiceProvider extends ServiceProvider
             __DIR__.'/resources/views/categories' => base_path('resources/views/blog/categories'),
             __DIR__.'/resources/views/posts' => base_path('resources/views/blog/posts'),
             __DIR__.'/resources/views/settings' => base_path('resources/views/blog/settings'),
-            __DIR__.'/Models' => base_path('app/Models'),
+            __DIR__.'/Models' => base_path('app/Models/Blog'),
         ],'blog');
     }
 
