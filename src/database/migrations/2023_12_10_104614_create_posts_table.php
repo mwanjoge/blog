@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('category_id')->constrained();
             $table->foreignId('post_id')->nullable()->constrained();
-            $table->string('title');
+            $table->string('title')->nullable();
             $table->string('slug')->nullable();
             $table->string('image')->nullable();
             $table->string('lang')->default('en');
