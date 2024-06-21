@@ -7,7 +7,9 @@ function getLayoutSections()
 
 function getPostBySlug($slug)
 {
-    return \Nisimpo\Blog\Models\Post::where('slug',$slug)->get()->first();
+    return \Nisimpo\Blog\Models\Post::where('slug',$slug)
+        ->where('lang',session()->get('locale'))
+        ->get()->first();
 }
 
 function getPostByCategory($categoryName)
