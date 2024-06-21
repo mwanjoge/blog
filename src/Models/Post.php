@@ -2,10 +2,12 @@
 
 namespace Nisimpo\Blog\Models;
 
+use Illuminate\Database\Eloquent\Attributes\ScopedBy;
 use Illuminate\Database\Eloquent\Model;
+use Nisimpo\Blog\Models\Scopes\LocaleScope;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
-
+#[ScopedBy([LocaleScope::class])]
 class Post extends Model implements HasMedia
 {
     use InteractsWithMedia;
@@ -26,4 +28,6 @@ class Post extends Model implements HasMedia
     {
         return $this->hasMany(Post::class);
     }
+
+
 }
