@@ -14,6 +14,10 @@ function getPostBySlug($slug)
 
 function getPostByCategory($categoryName)
 {
+    return \Nisimpo\Blog\Models\Category::with('posts')->where('name',$categoryName)->get()->first()->posts->first();
+}
+function getPostsByCategory($categoryName)
+{
     return \Nisimpo\Blog\Models\Category::with('posts')->where('name',$categoryName)->get()->first()->posts;
 }
 
