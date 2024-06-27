@@ -34,6 +34,11 @@ function getLatestPostList(int $limit = 3, string $slug = null){
     return $posts;
 }
 
+function getLatestNews($limit){
+    return \Nisimpo\Blog\Models\Post::select('posts.*')->join('categories','posts.category_id','categories.id')
+        ->where('categories.slug','news_section')->orderBy('posts.id','desc')->limit($limit)->get();
+}
+
 function getCategories($parent){
     return \Nisimpo\Blog\Models\Category::with('categories')->where('name',$parent)->get()->first()->categories;
 }
